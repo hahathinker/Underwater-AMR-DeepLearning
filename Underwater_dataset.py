@@ -12,7 +12,7 @@ class Dataset():
     
     
     def __init__(self,filename1="BPSK.mat",filename2="QPSK.mat",
-    filename3="8PSK.mat",filename4="16QAM.mat",filename5="64QAM.mat",filename6="256QAM.mat",data_dir:str="/mnt/OFDM/dataset/OFDM/OTFS"):
+    filename3="8PSK.mat",filename4="16QAM.mat",filename5="64QAM.mat",filename6="256QAM.mat",data_dir1:str="C:/Users/Lenovo/OFDM-OTFS-modulation-recognition/dataset/Gauss"):
         #storage path for datasets
 
         self.filename1=filename1
@@ -22,13 +22,12 @@ class Dataset():
         self.filename5=filename5
         self.filename6=filename6
         
-        self.path1=osp.join(data_dir,self.filename1)
-        self.path2=osp.join(data_dir,self.filename2)
-        self.path3=osp.join(data_dir,self.filename3)
-        self.path4=osp.join(data_dir,self.filename4)
-        self.path5=osp.join(data_dir,self.filename5)
-
-        self.path6=osp.join(data_dir,self.filename6)
+        self.path1=osp.join(data_dir1,self.filename1)
+        self.path2=osp.join(data_dir1,self.filename2)
+        self.path3=osp.join(data_dir1,self.filename3)
+        self.path4=osp.join(data_dir1,self.filename4)
+        self.path5=osp.join(data_dir1,self.filename5)
+        self.path6=osp.join(data_dir1,self.filename6)
         
 
 
@@ -93,8 +92,11 @@ class Dataset():
             lab_snr=data_bpsk[0][i][1][0][0][1]
             lab_snr=int(lab_snr)
             label_snr.append(lab_snr)
-        print(label_snr[-1])
-        print(label_snr[0])
+        # print(label_snr[-1])
+        # print(label_snr[0])
+        # print(label_snr)
+        # print(lab_mod)
+        # eixt()
         for i in range(num_data):
             data=data_qpsk[0][i][0][0]
             data=torch.FloatTensor(data)
@@ -167,9 +169,12 @@ class Dataset():
             lab_snr=data_256qam[0][i][1][0][0][1]
             lab_snr=int(lab_snr)
             label_snr.append(lab_snr)
-        #print(X[-1])
-        #print(label_mod[-1])
-        #print(label_snr[-1])
+        # print(X[-1])
+        # print(label_mod[-1])
+        # print(label_snr[-1])
+        # print(X)
+        # print(label_mod)
+        # print(label_snr)
 
         
         
@@ -195,7 +200,14 @@ class Dataset():
         return self.X.shape[0]
 
 #data=Dataset()
+dataset = Dataset()
 
+# 方式1：直接打印 load_data 返回的结果（但注意 load_data 已经在 __init__ 中被调用了）
+# 如果你还想重新加载数据，可以显式调用：
+# X, label_mod, label_snr = dataset.load_data()
+# print("X shape:", X.shape)
+# print("First 5 labels:", label_mod[:5])
+# print("First 5 SNRs:", label_snr[:50])
 
 
 

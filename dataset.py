@@ -13,24 +13,24 @@ class Dataset():
     
     
     
-    def __init__(self,filename1="BPSK.mat",filename2="QPSK.mat",filename3="8PSK.mat",filename4="16QAM.mat",filename5="64QAM.mat",data_dir1:str="/mnt/OFDM/dataset/BPSK",data_dir2:str="/mnt/OFDM/dataset/QPSK"):
+    def __init__(self,filename1="BPSK.mat",filename2="QPSK.mat",filename3="8PSK.mat",filename4="16QAM.mat",filename5="64QAM.mat",data_dir:str="./dataset/Gauss"):
         self.filename1=filename1
         self.filename2=filename2
         self.filename3=filename3
         self.filename4=filename4
         self.filename5=filename5
         
-        self.path1=osp.join(data_dir1,self.filename1)
-        self.path2=osp.join(data_dir1,self.filename2)
-        self.path3=osp.join(data_dir1,self.filename3)
-        self.path4=osp.join(data_dir1,self.filename4)
-        self.path5=osp.join(data_dir1,self.filename5)
+        self.path1=osp.join(data_dir,self.filename1)
+        self.path2=osp.join(data_dir,self.filename2)
+        self.path3=osp.join(data_dir,self.filename3)
+        self.path4=osp.join(data_dir,self.filename4)
+        self.path5=osp.join(data_dir,self.filename5)
 
-        self.path6=osp.join(data_dir2,self.filename1)
-        self.path7=osp.join(data_dir2,self.filename2)
-        self.path8=osp.join(data_dir2,self.filename3)
-        self.path9=osp.join(data_dir2,self.filename4)
-        self.path10=osp.join(data_dir2,self.filename5)
+        self.path6=osp.join(data_dir,self.filename1)
+        self.path7=osp.join(data_dir,self.filename2)
+        self.path8=osp.join(data_dir,self.filename3)
+        self.path9=osp.join(data_dir,self.filename4)
+        self.path10=osp.join(data_dir,self.filename5)
 
 
 
