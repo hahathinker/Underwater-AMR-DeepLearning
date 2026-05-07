@@ -1,46 +1,32 @@
-# ===================== Python 通用 =====================
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
-*.egg
 *.egg-info/
 dist/
 build/
-*.log
+.eggs/
 
-# ===================== 虚拟环境 =====================
-.env
-.venv
-env/
-venv/
-ENV/
+# 数据集文件
+dataset/
+*.mat
+*.pkl
 
-# ===================== IDE =====================
-.idea/
+# 模型文件
+model/
+*.pth
+
+# 训练生成的图片
+*.png
+
+# IDE
 .vscode/
+.idea/
 *.swp
 *.swo
 
-# ===================== 本项目特定 =====================
-
-# 模型权重文件（大文件，不上传）
-model/*.pth
-model/*.pt
-
-# 数据集（大文件，单独管理）
-dataset/Gauss/*.mat
-dataset/Gauss/*.zip
-dataset/RML2016.10a_dict.pkl/
-dataset/RML2016.10a_dict.pkl/*.pkl
-
-# 生成的图片
-*.png
-*.jpg
-*.jpeg
-
-# VSIX 插件（不是项目代码）
-*.vsix
-
-# 配置文件（含本地路径）
-.codex/
+# 环境
+.env
+venv/
+.venv/

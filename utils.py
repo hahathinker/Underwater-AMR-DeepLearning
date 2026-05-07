@@ -1,22 +1,22 @@
+"""
+工具函数模块
+包含 Averager（平均值计算）、count_acc（准确率计算）等通用工具
+"""
+
 import os
-import os.path as osp
 import torch
-import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
-def ensure_path(path):
-    """The function to make log path.
-    Args:
-      path: the generated saving path.
-    """
-    if os.path.exists(path):
-        pass
-    else:
-        os.mkdir(path)
+
+
+def ensure_path(path: str):
+    """确保路径存在, 不存在则创建"""
+    if not os.path.exists(path):
+        os.makedirs(path, exist_ok=True)
 
 
 class Averager():
-    """The class to calculate the average."""
+    """滑动平均值计算器"""
     def __init__(self):
         self.n = 0
         self.v = 0
@@ -30,12 +30,14 @@ class Averager():
 
 
 def count_acc(logits, label):
-    """The function to calculate the .
+    """计算分类准确率
+    
     Args:
-      logits: input logits.
-      label: ground truth labels.
-    Return:
-      The output accuracy.
+        logits: 模型输出 logits, shape (batch, num_class)
+        label: 真实标签, shape (batch,)
+    
+    Returns:
+        准确率 (float)
     """
     pred = F.softmax(logits, dim=1).argmax(dim=1)
     if torch.cuda.is_available():
@@ -43,15 +45,15 @@ def count_acc(logits, label):
     return (pred == label).type(torch.FloatTensor).mean().item()
 
 
-
 def compute_confidence_interval(data):
-    """The function to calculate the .
+    """计算均值和置信区间 (95% confidence)
+    
     Args:
-      data: input records
-      label: ground truth labels.
-    Return:
-      m: mean value
-      pm: confidence interval.
+        data: 输入数据列表
+    
+    Returns:
+        m: 均值
+        pm: 置信区间
     """
     a = 1.0 * np.array(data)
     m = np.mean(a)
